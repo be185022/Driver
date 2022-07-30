@@ -6,17 +6,13 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public
-class Driver {
+public class Driver {
 
-private
-  static ArrayList<Dog> dogList = new ArrayList<Dog>();
-private
-  static ArrayList<Monkey> monkeyList = new ArrayList<Monkey>();
+  private static ArrayList<Dog> dogList = new ArrayList<Dog>();
+  private static ArrayList<Monkey> monkeyList = new ArrayList<Monkey>();
   // Instance variables (if needed)
 
-public
-  static void main(String[] args) {
+  public static void main(String[] args) {
 
     initializeDogList();
     initializeMonkeyList();
@@ -58,8 +54,7 @@ public
   }
 
   // This method prints the menu options
-public
-  static void displayMenu() {
+  public static void displayMenu() {
     System.out.println("\n\n");
     System.out.println("\t\t\t\tRescue Animal System Menu");
     System.out.println("[1] Intake a new dog");
@@ -74,56 +69,44 @@ public
   }
 
   // Adds dogs to a list for testing
-public
-  static void initializeDogList() {
-    Dog dog1 =
-        new Dog("Spot", "German Shepherd", "male", "1", "25.6", "05-12-2019",
-                "United States", "intake", false, "United States");
-    Dog dog2 = new Dog("Rex", "Great Dane", "male", "3", "35.2", "02-03-2020",
-                       "United States", "Phase I", false, "United States");
-    Dog dog3 = new Dog("Bella", "Chihuahua", "female", "4", "25.6",
-                       "12-12-2019", "Canada", "in service", true, "Canada");
-
-    dogList.add(dog1);
-    dogList.add(dog2);
-    dogList.add(dog3);
+  public static void initializeDogList() {
+    // BEMERSON: You don't need to create separate variables.  The add() method of an array can just take the creation of the objects directly
+    dogList.add(new Dog("Spot", "German Shepherd", "male", "1", "25.6", "05-12-2019",
+    "United States", "intake", false, "United States"));
+    dogList.add(new Dog("Rex", "Great Dane", "male", "3", "35.2", "02-03-2020",
+    "United States", "Phase I", false, "United States"));
+    dogList.add(new Dog("Bella", "Chihuahua", "female", "4", "25.6",
+    "12-12-2019", "Canada", "in service", true, "Canada"));
   }
 
   // Adds monkeys to a list for testing
   // Optional for testing
-public
-  static void initializeMonkeyList() {
-    Monkey monkey1 = new Monkey(
-        "Joshua", "Marmoset", "5.7", "8.6", "17.9", "male", "2", "14.3",
-        "11-08-2019", "United Kingdom", "Phase I", true, "United States");
-    Monkey monkey2 = new Monkey(
-        "Abigail", "Capuchin", "4.8", "9.2", "20.7", "female", "3", "17.8",
-        "04-03-2019", "United States", "in service", false, "United Kingdom");
-    Monkey monkey3 = new Monkey(
-        "Isla", "Tamarin", "4.4", "7.8", "17.2", "female", "1", "15.1",
-        "06-23-2021", "United States", "intake", false, "United States");
-
-    monkeyList.add(monkey1);
-    monkeyList.add(monkey2);
-    monkeyList.add(monkey3);
+  public static void initializeMonkeyList() {
+    monkeyList.add(new Monkey(
+      "Joshua", "Marmoset", "5.7", "8.6", "17.9", "male", "2", "14.3",
+      "11-08-2019", "United Kingdom", "Phase I", true, "United States"));
+    monkeyList.add(new Monkey(
+      "Abigail", "Capuchin", "4.8", "9.2", "20.7", "female", "3", "17.8",
+      "04-03-2019", "United States", "in service", false, "United Kingdom"));
+    monkeyList.add(new Monkey(
+      "Isla", "Tamarin", "4.4", "7.8", "17.2", "female", "1", "15.1",
+      "06-23-2021", "United States", "intake", false, "United States"));
   }
 
   // Complete the intakeNewDog method
   // The input validation to check that the dog is not already in the list
   // is done for you
-public
-  static void intakeNewDog(Scanner scanner) {
+  public static void intakeNewDog(Scanner scanner) {
     System.out.println("What is the dog's name?");
     String name = scanner.nextLine();
     for (Dog dog : dogList) {
       if (dog.getName().equalsIgnoreCase(name)) {
         System.out.println("\n\nThis dog is already in our system\n\n");
-        return; //!!returns to menu!!
+        return; // !!returns to menu!!
       }
     }
 
     // Add the code to instantiate a new dog and add it to the appropriate list
-
     System.out.println("What is the dog's breed?");
     String breed = scanner.nextLine();
     System.out.println("What is the dog's gender?");
@@ -143,19 +126,15 @@ public
     scanner.nextLine();
     System.out.println("What is the dog's in Service Country?");
     String isc = scanner.nextLine();
-    Dog dog =
-        new Dog(name, breed, gender, age, weight, acqDate, acqCountry, ts, res,
-                isc); // I used prompts from Eclipse and it fixed errors i had!!
-    dogList.add(dog);
+    dogList.add(new Dog(name, breed, gender, age, weight, acqDate, acqCountry, ts, res, isc));
   }
 
   // Complete intakeNewMonkey
   // Instantiate and add the new monkey to the appropriate list
-  // For the project submission you must also  validate the input
+  // For the project submission you must also validate the input
   // to make sure the monkey doesn't already exist and the species type is
   // allowed
-public
-  static void intakeNewMonkey(Scanner scanner) {
+  public static void intakeNewMonkey(Scanner scanner) {
     System.out.println(
         "What is the monkey's name?"); // !!Following same formula for dog!!
     String name = scanner.nextLine();
@@ -206,17 +185,13 @@ public
     System.out.println("What is the monkey's In Service Country?");
     String isc = scanner.nextLine();
 
-    Monkey monkey =
-        new Monkey(name, species, tailLength, height, bodyLength, gender, age,
-                   weight, acqDate, acqCountry, ts, res, isc);
-
-    monkeyList.add(monkey);
+    monkeyList.add(new Monkey(name, species, tailLength, height, bodyLength, gender, age,
+    weight, acqDate, acqCountry, ts, res, isc));
   }
 
   // Complete reserveAnimal
   // You will need to find the animal by animal type and in service country
-public
-  static void reserveAnimal(Scanner scanner) {
+  public static void reserveAnimal(Scanner scanner) {
     System.out.println(
         "Enter The Service Animal Type: "); // !! Changed printout !!
     String animalType = scanner.nextLine();
@@ -243,7 +218,7 @@ public
     }
 
     System.out.println("Animal Type Not Found: " + animalType +
-                       "Location: " + country);
+        "Location: " + country);
   }
 
   // Complete printAnimals
@@ -262,7 +237,8 @@ public
 
   // !! I'm going to attempt two options to give myself a 50/50 shot of being
   // correctly implemented !!
-  @SuppressWarnings("null") public static void printAnimals(String type) {
+  @SuppressWarnings("null")
+  public static void printAnimals(String type) {
     // !! Implementing Dog !!
     // !! I used suggestions from the IDE to fix red X errors !!
     // !!I am ashamed as I do not know what some of them did but the errors are
@@ -271,8 +247,9 @@ public
     if (type.equalsIgnoreCase("dog")) {
       System.out.print("List Of Dogs");
 
-      for (@SuppressWarnings("unused") Dog dog : dogList)
-        ; // TIL @suppresswarnings just ignores the warning.  I don't feel as
+      for (@SuppressWarnings("unused")
+      Dog dog : dogList)
+        ; // TIL @suppresswarnings just ignores the warning. I don't feel as
           // smart now
       Object dog = null;
       System.out.println(dog.toString());
@@ -282,7 +259,7 @@ public
 
       System.out.println("Monkey List");
       for (Monkey monkey : monkeyList)
-        System.out.println(Monkey.toString());
+        System.out.println(monkey.toString());
     }
 
     if (type.equalsIgnoreCase("available")) {
