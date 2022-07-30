@@ -39,7 +39,7 @@ public class Dog {
     }
 
     public String toString() {
-        return "Name: " + name + ", Status: " + trainingStatus + ", Acquisition Location: " + acquisitionLocation;
+        return "Name: " + name + ", Status: " + trainingStatus + ", Acquisition Location: " + acquisitionLocation + ", Reserved? " + (isReserved ? "Yes" : "No");
     }
 
     private String name;
