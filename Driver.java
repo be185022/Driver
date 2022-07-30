@@ -102,7 +102,7 @@ public class Driver {
     for (Dog dog : dogList) {
       if (dog.getName().equalsIgnoreCase(name)) {
         System.out.println("\n\nThis dog is already in our system\n\n");
-        return; // !!returns to menu!!
+        return;
       }
     }
 
@@ -135,14 +135,12 @@ public class Driver {
   // to make sure the monkey doesn't already exist and the species type is
   // allowed
   public static void intakeNewMonkey(Scanner scanner) {
-    System.out.println(
-        "What is the monkey's name?"); // !!Following same formula for dog!!
+    System.out.println("What is the monkey's name?");
     String name = scanner.nextLine();
     for (Monkey monkey : monkeyList) {
       if (monkey.getName().equalsIgnoreCase(name)) {
         System.out.println("\n\nThis monkey is already in our system\n\n");
-
-        return; // !!Added return to get back to menu selection!!
+        return;
       }
     }
 
@@ -192,8 +190,7 @@ public class Driver {
   // Complete reserveAnimal
   // You will need to find the animal by animal type and in service country
   public static void reserveAnimal(Scanner scanner) {
-    System.out.println(
-        "Enter The Service Animal Type: "); // !! Changed printout !!
+    System.out.println("Enter The Service Animal Type: ");
     String animalType = scanner.nextLine();
     System.out.println("Enter The Country: ");
     String country = scanner.nextLine();
@@ -202,7 +199,6 @@ public class Driver {
       if (dog.getAnimalType().equalsIgnoreCase(animalType) &&
           dog.getInServiceLocation().equalsIgnoreCase(country)) {
         dog.setReserved(true);
-
         return;
       }
     }
@@ -210,15 +206,12 @@ public class Driver {
     for (Monkey monkey : monkeyList) {
       if (monkey.getAnimalType().equalsIgnoreCase(animalType) &&
           monkey.getInServiceLocation().equalsIgnoreCase(country)) {
-
         monkey.setReserved(true);
-
         return;
       }
     }
 
-    System.out.println("Animal Type Not Found: " + animalType +
-        "Location: " + country);
+    System.out.println("Animal Type Not Found: " + animalType + ", Location: " + country);
   }
 
   // Complete printAnimals
@@ -234,36 +227,21 @@ public class Driver {
   // The other lists can have a print statement saying "This option needs to be
   // implemented". To score "exemplary" you must correctly implement the
   // "available" list.
-
-  // !! I'm going to attempt two options to give myself a 50/50 shot of being
-  // correctly implemented !!
-  @SuppressWarnings("null")
   public static void printAnimals(String type) {
-    // !! Implementing Dog !!
-    // !! I used suggestions from the IDE to fix red X errors !!
-    // !!I am ashamed as I do not know what some of them did but the errors are
-    // gone !!
 
     if (type.equalsIgnoreCase("dog")) {
-      System.out.print("List Of Dogs");
-
-      for (@SuppressWarnings("unused")
-      Dog dog : dogList)
-        ; // TIL @suppresswarnings just ignores the warning. I don't feel as
-          // smart now
-      Object dog = null;
-      System.out.println(dog.toString());
+      System.out.println("List of Dogs:");
+      for (Dog dog : dogList) {
+        System.out.println(dog.toString());
+      }
     }
-    // !! Implementing Monkey !!
-    if (type.equalsIgnoreCase("monkey")) {
-
-      System.out.println("Monkey List");
+    else if (type.equalsIgnoreCase("monkey")) {
+      System.out.println("List of Monkeys:");
       for (Monkey monkey : monkeyList)
         System.out.println(monkey.toString());
     }
-
-    if (type.equalsIgnoreCase("available")) {
-      System.out.println("Dogs In Service And Available");
+    else if (type.equalsIgnoreCase("available")) {
+      System.out.println("Dogs In Service And Available:");
       for (Dog dog : dogList) {
         if (dog.getTrainingStatus().equalsIgnoreCase("in service") &&
             !dog.getReserved()) {
@@ -271,17 +249,13 @@ public class Driver {
         }
       }
 
-      System.out.print("Monkeys In Service And Available");
+      System.out.println("Monkeys In Service And Available:");
       for (Monkey monkey : monkeyList) {
         if (monkey.getTrainingStatus().equalsIgnoreCase("in service") &&
             !monkey.getReserved()) {
-          System.out.print(monkey.toString());
-
-          // !! I think I fixed all but one error !!
-          // !! I know I am missing something but I don't know what it is !!
+          System.out.println(monkey.toString());
         }
       }
     }
-    // System.out.println("The method printAnimals needs to be implemented");
   }
 }

@@ -1,33 +1,56 @@
 public class Dog {
 
-    // new Dog("Spot", "German Shepherd", "male", "1", "25.6", "05-12-2019",
-    // "United States", "intake", false, "United States");
-
     public Dog(String name, String breed, String gender, String age, String weight, String acquisitionDate,
-            String acquisitionLocation, String trainingStatus, boolean isReserved, String reservedCountry) {
+            String acquisitionLocation, String trainingStatus, boolean isReserved, String serviceLocation) {
+                this.name = name;
+                this.breed = breed;
+                this.gender = gender;
+                this.age = age;
+                this.weight = weight;
+                this.acquisitionDate = acquisitionDate;
+                this.acquisitionLocation = acquisitionLocation;
+                this.trainingStatus = trainingStatus;
+                this.isReserved = isReserved;
+                this.serviceLocation = serviceLocation;
     }
 
     public String getName() {
-        return null;
+        return name;
     }
 
     public String getAnimalType() {
-        return null;
+        return breed;
     }
 
     public String getInServiceLocation() {
-        return null;
+        return serviceLocation;
     }
 
     public void setReserved(boolean b) {
+        isReserved = b;
     }
 
     public String getTrainingStatus() {
-        return null;
+        return trainingStatus;
     }
 
     public boolean getReserved() {
-        return false;
+        return isReserved;
     }
+
+    public String toString() {
+        return "Name: " + name + ", Status: " + trainingStatus + ", Acquisition Location: " + acquisitionLocation;
+    }
+
+    private String name;
+    private String breed;
+    private String gender;
+    private String age;
+    private String weight;
+    private String acquisitionDate;
+    private String acquisitionLocation;
+    private String trainingStatus;
+    private boolean isReserved;
+    private String serviceLocation;
 
 }
